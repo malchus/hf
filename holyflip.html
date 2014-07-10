@@ -12,7 +12,7 @@ $(document).ready(function(){
 	function reloadPage(){location.reload();}
 	$('body').hide().fadeIn(2000) ;	
 
-	$.getJSON('john.json', function(jd) {
+	$.getJSON('books/genesis.json', function(jd) {
 		var c = Math.floor((Math.random() * 21) + 1);
 		var v = Math.floor((Math.random() * 15) + 1);
 		$('#stage').html('<strong>' + jd.book_name + " " + jd.book[c].chapter_nr  + ":" + jd.book[c].chapter[v].verse_nr  + '</strong>'); 
