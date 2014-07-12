@@ -6,33 +6,10 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	<script>
-	
-$(document).ready(function(){
-	function reloadPage(){location.reload();}
-	$('body').hide().fadeIn(2000) ;	
-
-	$.getJSON('books/genesis.json', function(jd) {
-		var c = Math.floor((Math.random() * 21) + 1);
-		var v = Math.floor((Math.random() * 15) + 1);
-		$('#stage').html('<strong>' + jd.book_name + " " + jd.book[c].chapter_nr  + ":" + jd.book[c].chapter[v].verse_nr  + '</strong>'); 
-		 $('#stage').append('<p> ' + jd.book[c].chapter[v].verse  + '</p>'); 
-          });
-								
-	$('#something').click(function() {
-		$("body").fadeOut(1000,reloadPage)	});
-
-});
-
-	
-
-</script>
-	
+	<script src="js/holyflip.js" ></script>	
 </head> 
 <body> 
-
 <div data-role="page">
-
 	<div data-role="header">
 		<h1>HolyFlip</h1>
 	</div><!-- /header -->
@@ -40,6 +17,9 @@ $(document).ready(function(){
 	<div data-role="content">	
 		<div id="stage">a</div>	
 		<button id="something">Find the Lord's Word for You</button>
+		
+<div id="thisbook"></div>		
+		
 	</div><!-- /content -->
 
 </div><!-- /page -->
