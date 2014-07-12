@@ -1,25 +1,57 @@
 	
 $(document).ready(function(){
+	// Open reload and fade in functions
 	function reloadPage(){location.reload();}
 	$('body').hide().fadeIn(2000) ;	
 
-	
-		
-var item_array = ["genesis", "exodus", "john"];
-var random_item = item_array[Math.floor(Math.random() * item_array.length)];
+	// Array for Bible Books
+	var item_array = ["genesis", "exodus", "john"];
+	var random_item = item_array[Math.floor(Math.random() * item_array.length)];
 
-	
-
-
-	
+	// Write the Verse to the Page
 	$.getJSON('books/'+ random_item + '.json', function(jd) {
-		var c = Math.floor((Math.random() * 21) + 1);
-		var v = Math.floor((Math.random() * 15) + 1);
+               
+		// Finds the number of chapters from a chosen book.
+		function countChapters(obj) {
+ 			var prop;
+  			var propCount = 0;
+			for (prop in obj) {
+    				propCount++;
+  			}
+  			return propCount;
+		}
+		
+		
+		// Randomize the chapter
+		var c = Math.floor((Math.random() * countChapters(jd.book)) + 1);
+		
+		// Find the number of verses in the random chapter
+		function countVerses(obj) {
+                        var prop;
+                        var propCount = 0;
+                        for (prop in obj) {
+                                propCount++;
+                        }
+                        return propCount;
+                }
+		
+		// Randomize verse number
+		var v = Math.floor((Math.random() * countVerses(jd.book[c].chapter)) + 1);
+	
+		// Writes the Verse to the stage
 		$('#stage').html('<strong>' + jd.book_name + " " + jd.book[c].chapter_nr  + ":" + jd.book[c].chapter[v].verse_nr  + '</strong>'); 
-		 $('#stage').append('<p> ' + jd.book[c].chapter[v].verse  + '</p>'); 
-          });
+		$('#stage').append('<p> ' + jd.book[c].chapter[v].verse  + '</p>'); 
+        
+		
+
+ 
+	 });
 								
+	// Control the Holy Flip button
 	$('#something').click(function() {
-		$("body").fadeOut(1000,reloadPage)	});
+		$("body").fadeOut(1000,reloadPage)	
+	});
+
+
 
 });
