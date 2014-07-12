@@ -39,20 +39,23 @@ $(document).ready(function(){
 		var v = Math.floor((Math.random() * countVerses(jd.book[c].chapter)) + 1);
 	
 		// Writes the Verse to the stage
-		$('#stage').html('<strong>' + jd.book_name + " " + jd.book[c].chapter_nr  + ":" + jd.book[c].chapter[v].verse_nr  + '</strong>'); 
+		$('#stage').html('<h1>' + jd.book_name + " " + jd.book[c].chapter_nr  + ":" + jd.book[c].chapter[v].verse_nr  + '</h1>'); 
 		$('#stage').append('<p> ' + jd.book[c].chapter[v].verse  + '</p>'); 
         
 		// Control the Read Chapter in Context button
         	$('#readChapter').click(function() {
-		$('#context').html("<h2>" + jd.book_name + " " + jd.book[c].chapter_nr + "</hr>");
+		$('#top').slideUp(1000);
+		$('#context').fadeIn().append("<h2>" + jd.book_name + " " + jd.book[c].chapter_nr + "</hr>");
 		var vCount = countVerses(jd.book[c].chapter);
-		var x = 0
+		var x = 0;
 		while (x <= vCount)
 			{
 				x++
-				$('#context').append("<p>" + jd.book[c].chapter[x].verse_nr + ": " + jd.book[c].chapter[v].verse +"</p>");
-			}
-       		 });
+				$('#context').append("<p>" + jd.book[c].chapter[x].verse_nr + ": " + jd.book[c].chapter[x].verse +"</p>");
+			};
+       		
+
+		});
 
 		
  
@@ -63,6 +66,11 @@ $(document).ready(function(){
 		$("body").fadeOut(1000,reloadPage)	
 	});
 
+	$('#backFlip').click(function() {
+		$('#top').slideDown(1000);
+		$('#context').fadeOut(1000);        
+
+	});
 
 
 
