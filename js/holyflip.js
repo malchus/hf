@@ -42,15 +42,31 @@ $(document).ready(function(){
 		$('#stage').html('<strong>' + jd.book_name + " " + jd.book[c].chapter_nr  + ":" + jd.book[c].chapter[v].verse_nr  + '</strong>'); 
 		$('#stage').append('<p> ' + jd.book[c].chapter[v].verse  + '</p>'); 
         
-		
+		// Control the Read Chapter in Context button
+        	$('#readChapter').click(function() {
+		$('#context').html("<h2>" + jd.book_name + " " + jd.book[c].chapter_nr + "</hr>");
+		var vCount = countVerses(jd.book[c].chapter);
+		var x = 0
+		while (x <= vCount)
+			{
+				x++
+				$('#context').append("<p>" + jd.book[c].chapter[x].verse_nr + ": " + jd.book[c].chapter[v].verse +"</p>");
+			}
+       		 });
 
+		
  
 	 });
 								
 	// Control the Holy Flip button
-	$('#something').click(function() {
+	$('#holyFlip').click(function() {
 		$("body").fadeOut(1000,reloadPage)	
 	});
+
+
+
+
+
 
 
 
