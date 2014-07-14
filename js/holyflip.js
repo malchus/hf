@@ -37,13 +37,45 @@ $(document).ready(function(){
 		"joel",
 		"amos",
 		"obadiah",
-		"john"];
+		"jonah",
+		"micah",
+		"nahum",
+		"habakkuk",
+		"zephaniah",
+		"haggai",
+		"zechariah",
+		"malachi",
+		"matthew",
+		"mark",
+		"luke",
+		"john",
+		"acts",
+		"romans",
+		"1corinthians",
+		"2corinthians",
+		"galatians",
+		"ephesians",
+		"philippians",
+		"colossians",
+		"1thessalonians",
+		"2thessalonians",
+		"1timothy",
+		"2timothy",
+		"titus",
+		"philemon",
+		"hebrews",
+		"james",
+		"1peter",
+		"2peter",
+		"1john",
+		"2john",
+		"3john",
+		"jude",
+		"revelation"];
 	
 	var random_item = item_array[Math.floor(Math.random() * item_array.length)];
-
 	// Write the Verse to the Page
 	$.getJSON('books/'+ random_item + '.json', function(jd) {
-               
 		// Finds the number of chapters from a chosen book.
 		function countChapters(obj) {
  			var prop;
