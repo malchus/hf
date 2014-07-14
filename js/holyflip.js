@@ -5,7 +5,40 @@ $(document).ready(function(){
 	$('body').hide().fadeIn(2000) ;	
 
 	// Array for Bible Books
-	var item_array = ["genesis", "exodus", "john"];
+	var item_array = [
+		"genesis", 
+		"exodus", 
+		"leviticus", 
+		"numbers", 
+		"deuteronomy",
+		"joshua",
+		"judges",
+		"ruth",
+		"1sam",
+		"2sam",
+		"1kings",
+		"2kings",
+		"1chronicles",
+		"2chronicles",
+		"ezra",
+		"nehemiah",
+		"esther",
+		"job",
+		"psalms",
+		"proverbs",
+		"ecclesiastes",
+		"songofsolomon",
+		"isaiah",
+		"jeremiah",
+		"lamentations",
+		"ezekiel",
+		"daniel",
+		"hosea",
+		"joel",
+		"amos",
+		"obadiah",
+		"john"];
+	
 	var random_item = item_array[Math.floor(Math.random() * item_array.length)];
 
 	// Write the Verse to the Page
