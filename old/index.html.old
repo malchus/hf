@@ -1,0 +1,61 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title>HolyFlip</title> 
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+	<link rel="stylesheet" href="js/style.css">
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
+	<script src="js/holyflip.js" ></script>	
+
+
+
+<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "f5a1bcf3-6eed-48e0-8e95-63a78fd26360", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
+
+
+
+</head> 
+<body> 
+<div data-role="page">
+	<div data-role="header">
+		<div id="headerimg"><img  src="http://s3.amazonaws.com/images.holy-flip.com/holyflip.png" alt="holyflip" width="200px" /></div>
+	</div><!-- /header -->
+
+	<div data-role="content">	
+		<div id="top">
+		<div id="stage"></div>	
+<div id="socialbuttons">
+<span class='st_' displayText=''></span>
+<span class='st_facebook' displayText='Facebook'></span>
+<span class='st_twitter' displayText='Tweet'></span>
+<span class='st_pinterest' displayText='Pinterest'></span>
+<span class='st_email' displayText='Email'></span>
+</div>		
+<button id="holyFlip">HolyFlip!</button>
+		<button id="readChapter">Read Chapter in Context</button>		
+		</div>
+
+	<div id="context">
+		<button id="backFlip">Back to HolyFlip</button>
+	</div>		
+		<div id="ad">
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Mobile Banner -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:50px"
+     data-ad-client="ca-pub-8501154151685665"
+     data-ad-slot="6603599442"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+	</div><!-- /content -->
+	
+</div><!-- /page -->
+
+</body>
+</html>
