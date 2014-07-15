@@ -108,14 +108,14 @@ $(document).ready(function(){
 		$('#stage').append('<p> ' + jd.book[c].chapter[v].verse  + '</p>'); 
         
 		// Display the Chapter in Context.	
-		$('#context').fadeIn().append("<h2>" + jd.book_name + " " + jd.book[c].chapter_nr + "</hr>");
-		var vCount = countVerses(jd.book[c].chapter);
-		var x = 0;
-		while (x <= vCount)
-			{
-				x++
-				$('#context').append("<p>" + jd.book[c].chapter[x].verse_nr + ": " + jd.book[c].chapter[x].verse +"</p>");
-			};  
+				$('#context').fadeIn().append("<h2>" + jd.book_name + " " + jd.book[c].chapter_nr + "</hr>");
+				var vCount = countVerses(jd.book[c].chapter);
+				var x = 0;
+				while (x <= vCount)
+					{
+						x++
+						$('#context').append("<p>" + jd.book[c].chapter[x].verse_nr + ": " + jd.book[c].chapter[x].verse +"</p>");
+					};  
 			
     	
     	
