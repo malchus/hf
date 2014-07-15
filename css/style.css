@@ -1,8 +1,11 @@
-        #context {display:none}
-        #headerimg {margin:auto;padding:10px;text-align:center}
-        #stage h1{color:#0066cc;text-shadow:1px 2px 5px #ccc;text-align:center}
-        #stage {}
-        #context {padding:0 0 100px 0}
-        #ad {background:black;position:fixed;bottom:0;;padding:0;left:0;;border$
 
+        #headerimg {padding:10px;}
+        #stage h1{color:#0066cc;text-shadow:1px 2px 5px #ccc;text-align:center}
+        #stage {padding:0 20px 10px}
+        #stage img {text-align:center;margin:auto}
+        #context {padding:0 0 100px 0}
+        #ad {background:black;position:fixed;bottom:0;;padding:0;left:0;;border$}
+		#top {text-align:center;margin:auto}        
+
+		.sup {font-size: 70%; position:relative;top:-0.3em}
 
