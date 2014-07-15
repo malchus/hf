@@ -1,8 +1,7 @@
 	
 $(document).ready(function(){
-	// Open reload and fade in functions
-	function reloadPage(){location.reload();}
-	
+
+
 	
 
 $('#holyFlip').click(function() {
