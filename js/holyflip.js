@@ -2,6 +2,42 @@
 $(document).ready(function(){
 
 
+//Get Url Parementers
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
+
+
+
+
+
+
+// Paramenter End
+	
+var bookG = getUrlVars()["book"];
+$.getJSON('books/'+ bookG + '.json', function(vg) {
+	var chapterG = getUrlVars()["chapter"];
+	var verseG = getUrlVars()["verse"];
+	alert(bookG + chapterG + verseG);
+	$('#stage').html('<h1>' + bookG + " " + chapterG  + ":" + verseG  + '</h1>');
+	$('#stage').append('<p> ' + vg.book[bookG].chapter[verseG].verse  + '</p>');
+			
+		// jd.book[c].chapter[v].verse
+		});
+	
+
+	
+
 	
 
 $('#holyFlip').click(function() {
@@ -30,7 +66,6 @@ $('#holyFlip').click(function() {
 		// Writes the Verse to the stage
 	$("#stage").fadeToggle(1000, function(){	
 		$('#stage').html('<h1>' + jd.book_name + " " + jd.book[c].chapter_nr  + ":" + jd.book[c].chapter[v].verse_nr  + '</h1>').append('<p> ' + jd.book[c].chapter[v].verse  + '</p>').fadeToggle(); 
-	
     });
         
         
@@ -56,8 +91,6 @@ $('#holyFlip').click(function() {
 
 	
 		
-
-
 
 
 
