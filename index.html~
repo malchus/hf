@@ -47,9 +47,9 @@
 		<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>		
 		<div id="context"></div>
 			
-	<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>				
+					
 	</div><!-- /content -->
-	
+	<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>
 	<div data-role="footer">
 		
 	</div><!-- /footer -->
