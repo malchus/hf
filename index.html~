@@ -47,9 +47,9 @@
 		<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>		
 		<div id="context"></div>
 			
-					
+	<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>				
 	</div><!-- /content -->
-	<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>
+	
 	<div data-role="footer">
 		
 	</div><!-- /footer -->
@@ -57,6 +57,23 @@
 <!-- /page two -->
 
 
+<!-- Start of second page: #three -->
+<div data-role="page" id="three" data-theme="b">
+	
+	<div data-role="header">
+		<h1>Options</h1>
+	</div><!-- /header -->
+
+	<div data-role="content" data-theme="a">	
+		<p>Options Page</p>
+		
+	</div><!-- /content -->
+	
+	<div data-role="footer">
+		
+	</div><!-- /footer -->
+</div>
+<!-- /page three -->
 
 
 
