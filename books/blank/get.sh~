@@ -1,0 +1,8 @@
+#!/bin/bash
+# My first script
+
+
+echo "print this shit"
+wget https://getbible.net/json?p=Gen&v=nasb -O genesis.json
+wget https://getbible.net/json?p=Exodus&v=nasb -O exodus.json
+echo "it workded"	
