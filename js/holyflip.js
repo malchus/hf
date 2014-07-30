@@ -8,13 +8,23 @@ chapter = null;
 verse = null;
 current_version ="books/"+version_array[version_selector]+"/";
 
+
+
+
+
 // Write the Verse to the Stage //
 function stageWriter(bookname, chapternumber, versenumber) {
 	$("#stage").fadeToggle(1000, function(){$('#stage').html('<h1>' + bookname  + ' ' + chapternumber.chapter_nr + ":" + versenumber.verse_nr  + '</h1>').append('<p> ' + versenumber.verse  + '</p><span>' + version_array[version_selector] + '</span>').fadeToggle();});
-	$('#context').html("<h2>" + bookname + " " + chapternumber.chapter_nr + "</h2>");var x = 0;while (x <= vCount){ x++;$('#context').append("<p><span class='sup'>" + chapternumber.chapter[x].verse_nr + "</span> " + chapternumber.chapter[x].verse +"</p>");};  
+	$('#context').html("<h2>" + bookname + " " + chapternumber.chapter_nr + "</h2>");
+		var x = 0;
+		while (x <= vCount){ 
+			x++;
+			$('#context').append("<p><span class='sup'>" + chapternumber.chapter[x].verse_nr + "</span> " + chapternumber.chapter[x].verse +"</p>");
+		};  
 }
 
 $(document).ready(function(){
+				
 		
 // Translation Selector //		
 $( ".translator" ).change(function() {
