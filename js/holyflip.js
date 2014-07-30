@@ -12,8 +12,10 @@ current_version ="books/"+version_array[version_selector]+"/";
 
 
 
+
 // Write the Verse to the Stage //
 function stageWriter(bookname, chapternumber, versenumber) {
+	
 	$("#stage").fadeToggle(1000, function(){$('#stage').html('<h1>' + bookname  + ' ' + chapternumber.chapter_nr + ":" + versenumber.verse_nr  + '</h1>').append('<p> ' + versenumber.verse  + '</p><span>' + version_array[version_selector] + '</span>').fadeToggle();});
 	$('#context').html("<h2>" + bookname + " " + chapternumber.chapter_nr + "</h2>");
 		var x = 0;
@@ -23,15 +25,31 @@ function stageWriter(bookname, chapternumber, versenumber) {
 		};  
 }
 
+// Use this to replace the first stageWriter //
+function stageWriter2(sTranslation, sBook, sChapter, sVerse) {
+	$.getJSON('books/' + sTranslation + '/' + sBook + '.json', function(data) {
+			$("#stage").html(
+				"<h1>" + data.book_name + ' ' + data.book[sChapter].chapter_nr + ':' + data.book[sChapter].chapter[sVerse].verse_nr + '</h1><p>' +
+				data.book[sChapter].chapter[sVerse].verse + '</p>'
+				);
+	})
+};
+
 $(document).ready(function(){
-				
+						
+
+
+
+
+		
 		
 // Translation Selector //		
 $( ".translator" ).change(function() {
 	$( "select option:selected" ).each(function() {
 		
 		version_selector = $( this ).val();
-		$.getJSON('books/' + version_array[version_selector] +'/'+ book +'.json', function(d) {
+		
+		$.getJSON(current_version + book +'.json', function(d) {
 			stageWriter(d.book_name,d.book[chapter],d.book[chapter].chapter[verse]);
 		})	}); });
 		
