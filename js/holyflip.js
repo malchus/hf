@@ -57,14 +57,5 @@ $('#holyFlip').click(function() {
   	});		
  
  });
-			
-			
-			
-			
-								
-
-
-
-
 
 });
