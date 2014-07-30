@@ -8,10 +8,10 @@ chapter = null;
 verse = null;
 current_version ="books/"+version_array[version_selector]+"/";
 
-function stageWriter(b,c,v) {
-$('#stage').html('test' + b + c + v);
 
-}
+// Write the Verse to the Stage //
+function stageWriter(bookname, chapternumber, versenumber) {$("#stage").fadeToggle(1000, function(){$('#stage').html('<h1>' + bookname  + ' ' + chapternumber + ":" + versenumber.verse_nr  + '</h1>').append('<p> ' + versenumber.verse  + '</p><span>' + version_array[version_selector] + '</span>').fadeToggle();});}
+
 	
 $(document).ready(function(){
 		
@@ -103,20 +103,16 @@ $('#holyFlip').click(function() {
 		
 		
 		// Writes the Verse to the stage
-	$("#stage").fadeToggle(1000, function(){	
-		$('#stage').html('<h1>' + jd.book_name + " " + jd.book[c].chapter_nr  + ":" + jd.book[c].chapter[v].verse_nr  + '</h1>').append('<p> ' + jd.book[c].chapter[v].verse  + '</p><span>' + version_array[version_selector] + '</span>').fadeToggle(); 
- 
-		console.log( "holy flip success" );
-    });
+		stageWriter(jd.book_name , jd.book[c].chapter_nr, jd.book[c].chapter[v]);
              
+		
+		
 		// Display the Chapter in Context.	
 		$('#context').html("<h2>" + jd.book_name + " " + jd.book[c].chapter_nr + "</h2>");
 		
 		var vCount = countVerses(jd.book[c].chapter);
 		var x = 0;
 		
-		//Previous and Next Chapters
-		$('#contexts-nav').html('<button>Next Chapter</button>');
 		
 		
 		while (x <= vCount)
