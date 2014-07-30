@@ -1,7 +1,7 @@
 // Global Variables
 
 item_array = ["genesis", "exodus", "leviticus", "numbers", "deuteronomy","joshua", "judges", "ruth", "1sam", "2sam", "1kings", "2kings", "1chronicles", "2chronicles", "ezra","nehemiah", "esther", "job", "psalms", "proverbs", "ecclesiastes","songofsolomon", "isaiah", "jeremiah", "lamentations","ezekiel","daniel","hosea","joel","amos","obadiah","jonah","micah","nahum","habakkuk","zephaniah","haggai","zechariah","malachi","matthew","mark","luke","john","acts","romans","1corinthians","2corinthians","galatians","ephesians","philippians","colossians","1thessalonians","2thessalonians","1timothy","2timothy","titus","philemon","hebrews","james","1peter","2peter","1john","2john","3john","jude","revelation"];
-version_array = ["kjv","nasb"];
+version_array = ["kjv","nasb","amp"];
 version_selector = 0;
 book = null;
 chapter = null;
@@ -19,9 +19,9 @@ $(document).ready(function(){
 // Translation Selector //		
 $( ".translator" ).change(function() {
 	$( "select option:selected" ).each(function() {
-		alert($( this ).val())
+		
 		version_selector = $( this ).val();
-		$.getJSON('books/' + version_array[version_selector] +'/'+book+'.json', function(d) {
+		$.getJSON('books/' + version_array[version_selector] +'/'+ book +'.json', function(d) {
 			stageWriter(d.book_name,d.book[chapter],d.book[chapter].chapter[verse]);
 		})	}); });
 		
