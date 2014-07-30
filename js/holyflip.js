@@ -9,28 +9,72 @@ verse = null;
 current_version ="books/"+version_array[version_selector]+"/";
 
 function stageWriter(b,c,v) {
-$('#stage').html('test' + b + c + v)
+$('#stage').html('test' + b + c + v);
+
 }
 	
 $(document).ready(function(){
 		
 $( "#nasb" ).click(function() {
+		version_selector = 1;
 		$.getJSON('books/nasb/'+book+'.json', function(d) {
-			console.log( "success" );
-			  $('#stage').html('poo');
-	// THIS PART NEEDS ATTENTION. INCLUDE STAGE WRTITING FUNCTION THAT WILL INCLUDE ON OF THE THING>  MAYBE NEED TO CRATE MORE GLOBALS AND FUNCTIONS		
+
+		console.log( "nasb success" );
+		var c = chapter;
+		var v = verse;
+		$('#stage').html('<h1>' + d.book_name + " " + d.book[c].chapter_nr  + ":" + d.book[c].chapter[v].verse_nr  + '</h1>').append('<p> ' + d.book[c].chapter[v].verse  + '</p><span>' + version_array[version_selector] + '</span>'); 
+
+		// Display the Chapter in Context.	
+		$('#context').html("<h2>" + d.book_name + " " + d.book[c].chapter_nr + "</h2>");
+		function countVerses(obj) {var prop;var propCount = 0;for (prop in obj) {propCount++;}return propCount;}
 		
-	})	
-		
-           
-  	});
+		var vCount = countVerses(d.book[c].chapter);
+		var x = 0;
+		while (x <= vCount)
+			{	console.log("counter")
+				x++
+				$('#context').append("<p><span class='sup'>" + d.book[c].chapter[x].verse_nr + "</span> " + d.book[c].chapter[x].verse +"</p>");
+			};  
+
+
+		})	
+});
   	
 		
 	
 	
 	
 		
-$( "#kjv" ).click(function() {version_selector = 0;});
+$( "#kjv" ).click(function() {
+		version_selector = 0;
+		$.getJSON('books/kjv/'+book+'.json', function(d) {
+
+		console.log( "kjv success" );
+		var c = chapter;
+		var v = verse;
+		$('#stage').html('<h1>' + d.book_name + " " + d.book[c].chapter_nr  + ":" + d.book[c].chapter[v].verse_nr  + '</h1>').append('<p> ' + d.book[c].chapter[v].verse  + '</p><span>' + version_array[version_selector] + '</span>'); 
+
+		// Display the Chapter in Context.	
+		$('#context').html("<h2>" + d.book_name + " " + d.book[c].chapter_nr + "</h2>");
+		function countVerses(obj) {var prop;var propCount = 0;for (prop in obj) {propCount++;}return propCount;}
+		
+		var vCount = countVerses(d.book[c].chapter);
+		var x = 0;
+		while (x <= vCount)
+			{	console.log("counter")
+				x++
+				$('#context').append("<p><span class='sup'>" + d.book[c].chapter[x].verse_nr + "</span> " + d.book[c].chapter[x].verse +"</p>");
+			};  
+
+
+		})	
+});
+  	
+
+
+
+
+
 
 $('#holyFlip').click(function() {
 	
@@ -66,14 +110,24 @@ $('#holyFlip').click(function() {
     });
              
 		// Display the Chapter in Context.	
-		$('#context').html("<h2>" + jd.book_name + " " + jd.book[c].chapter_nr + "</hr>");
+		$('#context').html("<h2>" + jd.book_name + " " + jd.book[c].chapter_nr + "</h2>");
+		
 		var vCount = countVerses(jd.book[c].chapter);
 		var x = 0;
+		
+		//Previous and Next Chapters
+		$('#contexts-nav').html('<button>Next Chapter</button>');
+		
+		
 		while (x <= vCount)
 			{
 				x++
-				$('#context').append("<p><span class='sup'>" + jd.book[c].chapter[x].verse_nr + "</span> " + jd.book[c].chapter[x].verse +"</p>");
+				$('#context').append("<p><span class='sup'>" + jd.book[c].chapter[x].verse_nr + "</span> " + jd.book[c].chapter[x].verse +"</p>");		
+						
 			};  
+		
+		
+
 			
   	});
   	

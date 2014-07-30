@@ -49,7 +49,7 @@
 	<div data-role="content" data-theme="a">	
 		<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>		
 		<div id="context"></div>
-			
+		<div id="context-nav">ddd</div>
 	<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>				
 	</div><!-- /content -->
 	
@@ -69,8 +69,8 @@
 
 	<div data-role="content" data-theme="a">	
 		<p>Options Page</p>
-		<button id="kjv update">kjv</button>
-		<button id="nasb update">nasb</button>
+		<button id="kjv">kjv</button>
+		<button id="nasb">nasb</button>
 	</div><!-- /content -->
 	<a href="#one"  data-icon="arrow-l"  data-direction="reverse" data-role="button" data-theme="a">Change Translation</a>	
 	<div data-role="footer">
