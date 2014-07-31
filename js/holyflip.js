@@ -14,36 +14,45 @@ current_version ="books/"+version_array[version_selector]+"/";
 
 
 // Write the Verse to the Stage //
-function stageWriter(bookname, chapternumber, versenumber) {
-	
-	$("#stage").fadeToggle(1000, function(){$('#stage').html('<h1>' + bookname  + ' ' + chapternumber.chapter_nr + ":" + versenumber.verse_nr  + '</h1>').append('<p> ' + versenumber.verse  + '</p><span>' + version_array[version_selector] + '</span>').fadeToggle();});
-	$('#context').html("<h2>" + bookname + " " + chapternumber.chapter_nr + "</h2>");
-		var x = 0;
-		while (x <= vCount){ 
-			x++;
-			$('#context').append("<p><span class='sup'>" + chapternumber.chapter[x].verse_nr + "</span> " + chapternumber.chapter[x].verse +"</p>");
-		};  
-}
 
-// Use this to replace the first stageWriter //
-function stageWriter2(sTranslation, sBook, sChapter, sVerse) {
+function stageWriter(sTranslation, sBook, sChapter, sVerse) {
 	$.getJSON('books/' + sTranslation + '/' + sBook + '.json', function(data) {
+			$("#stage").fadeToggle(1000, function(){
 			$("#stage").html(
 				"<h1>" + data.book_name + ' ' + data.book[sChapter].chapter_nr + ':' + data.book[sChapter].chapter[sVerse].verse_nr + '</h1><p>' +
 				data.book[sChapter].chapter[sVerse].verse + '</p>'
-				);
+				).fadeToggle();});
+
+
+		// Find the number of verses in the random chapter
+		function countVerses(obj) {var prop;var propCount = 0;for (prop in obj) {propCount++;}return propCount;}
+
+		vCount = countVerses(data.book[10].chapter);  // Logs Number of Verses to Global in case of Version Switch.	
+			
+			$('#context').html("<h2>" + data.book_name + " " + data.book[sChapter].chapter_nr + "</h2>");
+				var x = 1;
+				while (x <= vCount){ 
+				
+			$('#context').append("<p><span class='sup'>" + data.book[sChapter].chapter[x].verse_nr + "</span> " + data.book[sChapter].chapter[x].verse +"</p>");
+			x++;		
+		}; 	
+				
+				
 	})
 };
 
 $(document).ready(function(){
+	randomDecider();					
 						
-
-
-
-
-		
-		
-// Translation Selector //		
+// New random flip function
+					
+$('#holyFlip').click(function() {
+		randomDecider();
+		stageWriter(version_array[version_selector], book, chapter, verse);		
+ });	
+						
+// Translation Selector FIX THIS TO MATCH NEW FLIPPER//	
+	
 $( ".translator" ).change(function() {
 	$( "select option:selected" ).each(function() {
 		
@@ -54,8 +63,11 @@ $( ".translator" ).change(function() {
 		})	}); });
 		
 //Initial Flipper  	
-$('#holyFlip').click(function() {
-	var random_item = item_array[Math.floor(Math.random() * item_array.length)]; // Random Choice of Book
+
+
+
+function randomDecider() {
+var random_item = item_array[Math.floor(Math.random() * item_array.length)]; // Random Choice of Book
 	
 	// Get from Json File //	
 	$.getJSON(current_version + random_item + '.json', function(jd) {
@@ -77,12 +89,11 @@ $('#holyFlip').click(function() {
 		chapter = jd.book[c].chapter_nr;
 		verse =jd.book[c].chapter[v].verse_nr;  	
 		vCount = countVerses(jd.book[c].chapter);  // Logs Number of Verses to Global in case of Version Switch.
-		
-		// Writes the Verse to the stage and context
-		stageWriter(jd.book_name , jd.book[c], jd.book[c].chapter[v]);
 			
-  	});		
- 
- });
+  	});
+
+}
+
+
 
 });
