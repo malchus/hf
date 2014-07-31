@@ -8,11 +8,6 @@ chapter = null;
 verse = null;
 current_version ="books/"+version_array[version_selector]+"/";
 
-
-
-
-
-
 // Write the Verse to the Stage //
 
 function stageWriter(sTranslation, sBook, sChapter, sVerse) {
@@ -27,7 +22,7 @@ function stageWriter(sTranslation, sBook, sChapter, sVerse) {
 		// Find the number of verses in the random chapter
 		function countVerses(obj) {var prop;var propCount = 0;for (prop in obj) {propCount++;}return propCount;}
 
-		vCount = countVerses(data.book[10].chapter);  // Logs Number of Verses to Global in case of Version Switch.	
+		vCount = countVerses(data.book[sChapter].chapter);  // Logs Number of Verses to Global in case of Version Switch.	
 			
 			$('#context').html("<h2>" + data.book_name + " " + data.book[sChapter].chapter_nr + "</h2>");
 				var x = 1;
@@ -49,7 +44,7 @@ $(document).ready(function(){
 
 $('#holyFlip').click(function() {randomDecider();stageWriter(version_array[version_selector], book, chapter, verse);});	
 						
-// Translation Selector FIX THIS TO MATCH NEW FLIPPER//	
+// Translation Selector FIX //	
 
 $( ".translator" ).change(function() {
 	$( "select option:selected" ).each(function() {		
