@@ -20,7 +20,7 @@ function stageWriter(sTranslation, sBook, sChapter, sVerse) {
 			$("#stage").fadeToggle(1000, function(){
 			$("#stage").html(
 				"<h1>" + data.book_name + ' ' + data.book[sChapter].chapter_nr + ':' + data.book[sChapter].chapter[sVerse].verse_nr + '</h1><p>' +
-				data.book[sChapter].chapter[sVerse].verse + '</p>'
+				data.book[sChapter].chapter[sVerse].verse + '</p><span>'+ sTranslation +"</span>"
 				).fadeToggle();});
 
 
@@ -42,29 +42,22 @@ function stageWriter(sTranslation, sBook, sChapter, sVerse) {
 };
 
 $(document).ready(function(){
+// Opening Flip
 	randomDecider();					
 						
-// New random flip function
-					
-$('#holyFlip').click(function() {
-		randomDecider();
-		stageWriter(version_array[version_selector], book, chapter, verse);		
- });	
+// New random flip function					
+
+$('#holyFlip').click(function() {randomDecider();stageWriter(version_array[version_selector], book, chapter, verse);});	
 						
 // Translation Selector FIX THIS TO MATCH NEW FLIPPER//	
-	
+
 $( ".translator" ).change(function() {
-	$( "select option:selected" ).each(function() {
-		
+	$( "select option:selected" ).each(function() {		
 		version_selector = $( this ).val();
-		
-		$.getJSON(current_version + book +'.json', function(d) {
-			stageWriter(d.book_name,d.book[chapter],d.book[chapter].chapter[verse]);
-		})	}); });
+		stageWriter(version_array[version_selector], book, chapter, verse)	;
+			}); });
 		
 //Initial Flipper  	
-
-
 
 function randomDecider() {
 var random_item = item_array[Math.floor(Math.random() * item_array.length)]; // Random Choice of Book
