@@ -53,8 +53,8 @@
 		<div id="context"></div>
 		
 		<div id="context-nav" data-role="controlgroup"  data-type="horizontal">		
-			<a href="#previous" class="ui-btn ui-btn-a" id="previous" data-transition="slide" data-role="button" data-theme="a">Previous</a>
-			<a href="#next"  data-role="button" data-theme="b">Next</a>
+			<button class="ui-btn ui-btn-a" id="previousChapter" data-transition="slide" data-role="button" data-theme="a">Previous</button>
+			<button  data-role="button" data-theme="b" id="nextChapter">Next</button>>
 		</div>		
 		
 	<a href="#one" data-icon="arrow-l" data-transition="flip" data-direction="reverse" data-role="button" data-theme="a">Back to HolyFlip!</a>				

@@ -42,10 +42,16 @@ $(document).ready(function(){
 // New random flip function
 					
 $('#holyFlip').click(function() {
-	randomDecider();
-	
-	
+	randomDecider();	
 	});	
+	
+$('#previousChapter').click(function () {
+	prev();
+		})
+		
+$('#nextChapter').click(function () {
+	next();
+		})		
 						
 // Translation Selector FIX //	
 
@@ -68,11 +74,20 @@ $( ".translator" ).change(function() {
 
 function prev() {
 	if (chapter > 1) {
-		chapter --;	
+		chapter -- ;	
 		stageWriter(version_array[version_selector], book, chapter, verse);
 	}
 	else {alert("No previous chapter, genious")}
 };
+
+function next() {
+	if (chapter > 1) {
+		chapter ++ ;	
+		stageWriter(version_array[version_selector], book, chapter, verse);
+	}
+	else {alert("No next")}
+};
+
 
 //Initial Flipper  	
 
