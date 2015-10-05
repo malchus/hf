@@ -5,30 +5,43 @@
 <title>Title of the document</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
-$( document ).ready(function() {
-    console.log( "ready!" );
+$(document).ready(function(){
+	
+	//attach a jQuery live event to the button
 
-$.getJSON( "/a/bible/api/kjv/genesis/2/10", function( data ) {
-  var items = [];
-  $.each( data, function( key, val ) {
-    items.push( "<li id='" + key + "'>" + val + "</li>" );
-  });
+var testGenesis = "/a/bible/api/kjv/genesis/2/10--91"		
+	
+// Function that grabs verses from drupal api  and displays it to a page. //
+
+function ShowVerse (call) {
+$.getJSON(call, function( data ) {
+  	var items = [];
+  	var verses = data.nodes.length // Number of Verse passed through JSON to display.
+  	var verseLoop=0; // Counter for display verses.
+  	$('h1.title').replaceWith('<h1>' + data.nodes[0].node.field_book + ' ' + data.nodes[0].node.field_chapter + ' </h1>');
+  	while (verseLoop<verses) {
+  		items.push( '<h2 class="verse">' + data.nodes[verseLoop].node.title + '</h2><p>' + data.nodes[verseLoop].node.body + '</p>' );
+  		verseLoop++
+ }
+  
  
-  $( "<ul/>", {
-    "class": "my-new-list",
-    html: items.join( "" )
-  }).appendTo( "body" );
+	$( "<div/>", {
+    	"class": "verse",
+    	html: items.join( "" )
+  	}).appendTo( "body" );
 });
 
+}
+// End Grabber Function //
 
-
+ShowVerse(testGenesis)
 });
 
 </script>
 </head>
 
 <body>
-<h1>Test Doc</h1>
+<h1 class="title">Test Doc</h1>
 
 Content of the document......
 
