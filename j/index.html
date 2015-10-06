@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Title of the document</title>
+<style>
+.flip{display:none;}
+</style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -10,7 +13,7 @@ $(document).ready(function(){
 	//attach a jQuery live event to the button
 
 
-holyFlip = "/a/bible/flip/json";		
+var holyFlip = "/a/bible/flip/json";		
 	
 // Function that grabs verses from drupal api  and displays it to a page. //
 
@@ -19,32 +22,65 @@ $.getJSON(call, function( data ) {
   	var items = [];
   	var verses = data.nodes.length // Number of Verse passed through JSON to display.
   	var verseLoop=0; // Counter for display verses.
-  	$('h1.title').replaceWith('<h1>' + data.nodes[0].node.field_book + ' ' + data.nodes[0].node.field_chapter + ' </h1>');
+  	
+
   	while (verseLoop<verses) {
-  		items.push( '<h2 class="verse">' + data.nodes[verseLoop].node.title + '</h2><p>' + data.nodes[verseLoop].node.body + '</p>' );
+  		items.push( '<h2 class="verse">' + data.nodes[verseLoop].node.title + '</h2><p>' + data.nodes[verseLoop].node.body + '</p><span>' + data.nodes[verseLoop].node.field_translation + '</span>');
   		verseLoop++
  }
-  
- 
-	$( "<div/>", {
-    	"class": "verse",
-    	html: items.join( "" )
-  	}).appendTo( "body" );
+	
+		$( "<div/>", {
+    		"class": "verse",
+    		html: items.join( "" )
+  	}).appendTo( ".flip" )
+  	$('.flip').fadeIn('slow')
+
 });
+
 
 }
 // End Grabber Function //
 
-ShowVerse(holyFlip)
+
+// Need Function to Select Translation //
+$( "form" ).submit(function( event ) {
+  holyFlip = "/a/bible/flip/json/" + $( "#switchVersion" ).val()
+ 
+
+  
 });
+
+
+
+// End Translation Pick //
+
+
+
+
+ShowVerse(holyFlip)
+
+});
+
+
+
 
 </script>
 </head>
 
 <body>
-<h1 class="title">Test Doc</h1>
+<h1 class="title">HolyFlip! 2</h1>
+<form>
+    <select id="switchVersion">
+      <option value="kjv">KJV</option>
+      <option value="asv">ASV</option>
+    </select>
+    <button>Button</button>
+  </fieldset>
+</form>
 
-Content of the document......
+<div class="flip">
+
+</div>
 
 </body>
 
