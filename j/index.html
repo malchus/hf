@@ -9,7 +9,8 @@ $(document).ready(function(){
 	
 	//attach a jQuery live event to the button
 
-var testGenesis = "/a/bible/api/kjv/genesis/2/10--91"		
+
+holyFlip = "/a/bible/flip/json";		
 	
 // Function that grabs verses from drupal api  and displays it to a page. //
 
@@ -34,7 +35,7 @@ $.getJSON(call, function( data ) {
 }
 // End Grabber Function //
 
-ShowVerse(testGenesis)
+ShowVerse(holyFlip)
 });
 
 </script>

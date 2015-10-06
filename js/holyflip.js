@@ -1,13 +1,5 @@
 // Global Variables
-
-item_array = ["genesis", "exodus", "leviticus", "numbers", "deuteronomy","joshua", "judges", "ruth", "1sam", "2sam", "1kings", "2kings", "1chronicles", "2chronicles", "ezra","nehemiah", "esther", "job", "psalms", "proverbs", "ecclesiastes","songofsolomon", "isaiah", "jeremiah", "lamentations","ezekiel","daniel","hosea","joel","amos","obadiah","jonah","micah","nahum","habakkuk","zephaniah","haggai","zechariah","malachi","matthew","mark","luke","john","acts","romans","1corinthians","2corinthians","galatians","ephesians","philippians","colossians","1thessalonians","2thessalonians","1timothy","2timothy","titus","philemon","hebrews","james","1peter","2peter","1john","2john","3john","jude","revelation"];
-version_array = ["kjv","nasb","amp"];
-version_selector = 0;
-book = null;
-chapter = null;
-verse = null;
-current_version ="books/"+version_array[version_selector]+"/";
-
+holyFlip = "/a/bible/flip/json"
 // Write the Verse to the Stage //
 
 function stageWriter(sTranslation, sBook, sChapter, sVerse) {

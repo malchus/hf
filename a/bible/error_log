@@ -19,3 +19,9 @@
 [01-Oct-2015 13:12:44 America/Denver] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
 [01-Oct-2015 13:12:47 America/Denver] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
 [01-Oct-2015 13:12:48 America/Denver] PHP Warning:  Unknown: Input variables exceeded 1000. To increase the limit change max_input_vars in php.ini. in Unknown on line 0
+[05-Oct-2015 19:22:33 America/Chicago] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1233514 bytes) in /home2/malchusp/public_html/holyflip/a/bible/includes/database/database.inc on line 2171
+[05-Oct-2015 19:22:40 America/Chicago] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1233514 bytes) in /home2/malchusp/public_html/holyflip/a/bible/includes/database/database.inc on line 2171
+[05-Oct-2015 19:23:05 America/Chicago] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1233514 bytes) in /home2/malchusp/public_html/holyflip/a/bible/includes/database/database.inc on line 2171
+[05-Oct-2015 19:58:19 America/Chicago] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1233514 bytes) in /home2/malchusp/public_html/holyflip/a/bible/includes/database/database.inc on line 2171
+[05-Oct-2015 19:58:44 America/Chicago] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1233514 bytes) in /home2/malchusp/public_html/holyflip/a/bible/includes/database/database.inc on line 2171
+[05-Oct-2015 19:58:51 America/Chicago] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 1233514 bytes) in /home2/malchusp/public_html/holyflip/a/bible/includes/database/database.inc on line 2171
