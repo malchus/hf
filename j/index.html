@@ -2,38 +2,48 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Title of the document</title>
+<title>HolyFlip! Bible Discovery Tool</title>
 <style>
-.flip{display:none;}
+.flip {width:400px}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+
 	
-	//attach a jQuery live event to the button
+p1 = document.URL.split('&');																	// Variable to pull parameters from URl
 
 
-var holyFlip = "/a/bible/flip/json";		
-	
+if ( p1[1] ) {
+		newFlip = "/a/bible/api/" + $( "#switchVersion" ).val() + "/" + p1[3] + "/" + p1[4] + "/" + p1[5];
+		ShowVerse(newFlip);
+		
+		
+	} else {  															// idea to determine if user is using bookmark or initiating newflip //
+		newFlip = "/a/bible/flip/json/" + $( "#switchVersion" ).val();
+		
+		
+}
+
 // Function that grabs verses from drupal api  and displays it to a page. //
-
-function ShowVerse (call) {
-$.getJSON(call, function( data ) {
-  	var items = [];
-  	var verses = data.nodes.length // Number of Verse passed through JSON to display.
-  	var verseLoop=0; // Counter for display verses.
-  	
-
-  	while (verseLoop<verses) {
+function ShowVerse (call) {																		// call is path to json api //
+	$.getJSON(call, function( data ) {															// Json Call to api //
+  	var items = [];																				// Place holder for verse array //
+  	var verses = data.nodes.length // Number of Verse passed through JSON to display.			// Count the number of verses from call //
+  	var verseLoop=0; // Counter for display verses.												// Counter for while loop //
+  	translation = data.nodes[0].node.Synonyms;			
+  	book = data.nodes[0].node.field_book;
+  	chapter = data.nodes[0].node.field_chapter;
+  	verse = data.nodes[0].node.field_verse;
+  	while (verseLoop < verses) {
   		items.push( '<h2 class="verse">' + data.nodes[verseLoop].node.title + '</h2><p>' + data.nodes[verseLoop].node.body + '</p><span>' + data.nodes[verseLoop].node.field_translation + '</span>');
-  		verseLoop++
- }
-	
-		$( "<div/>", {
-    		"class": "verse",
-    		html: items.join( "" )
-  	}).appendTo( ".flip" )
-  	$('.flip').fadeIn('slow')
+  		verseLoop++ }
+
+		$( ".flip" ).empty().append(items);	
+		history.pushState(null, "", "?&verse&" + translation + "&" + book + "&" + chapter + "&" + verse );	
+		$(document).prop('title', data.nodes[0].node.title + ' | HolyFlip!'); 				// Change the Page title //
+		
+		
 
 });
 
@@ -42,22 +52,25 @@ $.getJSON(call, function( data ) {
 // End Grabber Function //
 
 
-// Need Function to Select Translation //
-$( "form" ).submit(function( event ) {
-  holyFlip = "/a/bible/flip/json/" + $( "#switchVersion" ).val()
+// Flip //
+$( "#switch" ).click(function () {
+	
+ ShowVerse("/a/bible/flip/json/" + $( "#switchVersion" ).val());
  
-
-  
 });
 
+window.onpopstate = function(event) {
+			
+			p2 = document.URL.split('&');
+			newFlip2 = "/j/?&verse&" + $( "#switchVersion" ).val() + "&" + p2[3] + "&" + p2[4] + "&" + p2[5];
+  			window.location.replace(newFlip2);		
+  					
+  					// Adds URL of the New Flip for Bookmarking purposes //
+		
+		};
+// End Flip//
 
-
-// End Translation Pick //
-
-
-
-
-ShowVerse(holyFlip)
+// make a history (most recent five verses) can also use this to help with back button problem. ///
 
 });
 
@@ -69,19 +82,29 @@ ShowVerse(holyFlip)
 
 <body>
 <h1 class="title">HolyFlip! 2</h1>
-<form>
+
     <select id="switchVersion">
+    
       <option value="kjv">KJV</option>
       <option value="asv">ASV</option>
     </select>
-    <button>Button</button>
+    <button id="switch">HolyFlip!</button>
   </fieldset>
-</form>
+
 
 <div class="flip">
 
+
 </div>
 
+<h3>Debug</h3>
+<div class="debug">
+</div>
+
+<div class="test">
+<div>
+Hi
+</div>
 </body>
 
 </html>
