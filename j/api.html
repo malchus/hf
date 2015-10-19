@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HolyFlip! Bible Discovery Tool</title>
+<style>
+.flip {width:400px}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+$.getJSON("/a/bible/login/api-comments/?nid=105509", function( data ) {
+var commentCount = data.length;
+var x=0;
+while (x<commentCount){
+$('<div>'+ data[x].subject + '</div>').appendTo('#comments');
+x++
+}
+
+console.log (data.length);
+ 
+ console.log (data[0].subject)
+ 
+ 
+})
+
+});
+
+
+
+</script>
+</head>
+
+<body>
+<h1 class="title">API Test</h1>
+<div id="comments">
+<h2> Comments</h2>
+</div>
+    
+</body>
+
+</html>
