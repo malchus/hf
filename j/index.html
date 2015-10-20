@@ -17,12 +17,8 @@ p1 = document.URL.split('&');																	// Variable to pull parameters fro
 if ( p1[1] ) {
 		newFlip = "/a/bible/api/" + $( "#switchVersion" ).val() + "/" + p1[3] + "/" + p1[4] + "/" + p1[5];
 		ShowVerse(newFlip);
-		
-		
 	} else {  															// idea to determine if user is using bookmark or initiating newflip //
 		newFlip = "/a/bible/flip/json/" + $( "#switchVersion" ).val();
-		
-		
 }
 
 // Function that grabs verses from drupal api  and displays it to a page. //
@@ -61,10 +57,8 @@ $( "#switch" ).click(function () {
 		newFlip2 = "/j/?&verse&" + $( "#switchVersion" ).val() + "&" + p2[3] + "&" + p2[4] + "&" + p2[5];
   		window.location.replace(newFlip2);		
   		
-  					// Adds URL of the New Flip for Bookmarking purposes //
-		
+  					// Adds URL of the New Flip for Bookmarking purposes //	
 	};
- 
 });
 
 
@@ -72,6 +66,36 @@ $( "#switch" ).click(function () {
 
 // make a history (most recent five verses) can also use this to help with back button problem. ///
 
+
+
+
+// Read in Context
+function ShowChapter() { 
+	var urlGet = document.URL.split('&');
+	var base = "/a/bible/reader/" + $( "#switchVersion" ).val() + "/" + urlGet[3] + "/" + urlGet[4];
+
+	$.getJSON(base, function( data ) {	
+	var verseCounter = data.nodes.length;
+	var x = 0;
+	while (x < verseCounter) {
+		$('<p>'+ data.nodes[x].node.field_verse + " " + data.nodes[x].node.body +'</p>').appendTo('.chapterReader');
+		x++
+	}
+	
+	});
+
+}
+
+
+$('.chapterReader h2').click(function(){
+	ShowChapter();
+});
+
+
+// Finish Context Reader
+
+
+// closing document ready brack 
 });
 
 
@@ -106,7 +130,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 </div>
-
+<div class="chapterReader">
+<h2>Read in Context</h2>
+</div>
 <h3>Debug</h3>
 <div class="debug">
 </div>
