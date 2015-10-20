@@ -38,8 +38,7 @@ function ShowVerse (call) {																		// call is path to json api //
   	while (verseLoop < verses) {
   		items.push( '<h2 class="verse">' + data.nodes[verseLoop].node.title + '</h2><p>' + data.nodes[verseLoop].node.body + '</p><span>' + data.nodes[verseLoop].node.field_translation + '</span>');
   		verseLoop++ }
-
-		$( ".flip" ).empty().append(items);	
+	$( ".flip" ).empty().append(items);	
 		history.pushState(null, "", "?&verse&" + translation + "&" + book + "&" + chapter + "&" + verse );	
 		$(document).prop('title', data.nodes[0].node.title + ' | HolyFlip!'); 				// Change the Page title //
 		
@@ -56,18 +55,19 @@ function ShowVerse (call) {																		// call is path to json api //
 $( "#switch" ).click(function () {
 	
  ShowVerse("/a/bible/flip/json/" + $( "#switchVersion" ).val());
+ window.onpopstate = function(event) {
+			
+	p2 = document.URL.split('&');
+		newFlip2 = "/j/?&verse&" + $( "#switchVersion" ).val() + "&" + p2[3] + "&" + p2[4] + "&" + p2[5];
+  		window.location.replace(newFlip2);		
+  		
+  					// Adds URL of the New Flip for Bookmarking purposes //
+		
+	};
  
 });
 
-window.onpopstate = function(event) {
-			
-			p2 = document.URL.split('&');
-			newFlip2 = "/j/?&verse&" + $( "#switchVersion" ).val() + "&" + p2[3] + "&" + p2[4] + "&" + p2[5];
-  			window.location.replace(newFlip2);		
-  					
-  					// Adds URL of the New Flip for Bookmarking purposes //
-		
-		};
+
 // End Flip//
 
 // make a history (most recent five verses) can also use this to help with back button problem. ///
@@ -81,6 +81,16 @@ window.onpopstate = function(event) {
 </head>
 
 <body>
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NN3HMP"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NN3HMP');</script>
+<!-- End Google Tag Manager -->
+
 <h1 class="title">HolyFlip! 2</h1>
 
     <select id="switchVersion">
@@ -88,7 +98,7 @@ window.onpopstate = function(event) {
       <option value="kjv">KJV</option>
       <option value="asv">ASV</option>
     </select>
-    <button id="switch">HolyFlip!</button>
+    <a  id="switch">HolyFlip!</a>
   </fieldset>
 
 
