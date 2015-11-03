@@ -25,37 +25,6 @@ function getCookie () {			// Check for previous Session Cookie//
 
 
 
-// Comment Trigger //
-$( ".comments" ).click(function () {
-	getComments();
-	getCookie();
-});
-
-
-// Comment Trigger //
-$( "#addComment" ).click(function () {
-	postComments()
-});
-
-
-// Get Comments
-$.getJSON("/a/bible/serve/api-comments/?nid=105509", function( data ) {
-	var commentCount = data.length;
-	var x=0;
-	while (x<commentCount){
-		$('<div>'+ data[x].subject + '</div>').appendTo('#comments');
-		x++
-	}
-
-console.log (data.length);
-console.log (data[0].subject)
- 
- 
-})
-
-// Stop Getting Comments
-
-
 
 
 
