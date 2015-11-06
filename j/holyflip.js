@@ -14,13 +14,12 @@ function getCookie () {			// Check for previous Session Cookie//
 	while (x < crumb) {
 		
 		if (breakCookie[x].indexOf("HFname") > 0){
-		$('<div>' + breakCookie[x] + '</div>').appendTo('#account');
+		$('<div>' + breakCookie[x] + '</div>').appendTo('body');
 		}
 		x++;
 	}
 	
 }
-
 
 
 

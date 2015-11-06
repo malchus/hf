@@ -5,9 +5,13 @@
 <title>Account | HolyFlip! Bible Discovery Tool</title>
 <style>
 .flip {width:400px}
+#settings {float:right;margin:20px}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="holyflip.js">
+
+
+<script src="account.js"></script>
+
 </head>
 
 <body>
@@ -21,18 +25,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-NN3HMP');</script>
 <!-- End Google Tag Manager -->
 
-
+<div id="settings">Settings</div>
 <h1 class="title">API Test</h1>
 <div id="account">
 <h2> Account</h2>
-Another test
 
+<form >
+	<label>Login</label> <input type="text" name="username" id="username" />
+	<label>Password</label> <input type="password" name="password" id="password" />
+	 <button type="submit" value="Submit" id="login">Submit</button>
+</form>
 </div>
     
     <br />
     
     
-   
+    <button id="logout">Log out of Holy FLip!</button>
+    
+   <div id="comment">Comments
+	   <div class="comments"></div>
+   </div>
 </body>
 
 </html>
