@@ -4,7 +4,7 @@
 $(document).ready(function(){
 
 
-// document.cookie="HFname=John Doe; expires=Thu, 18 Dec 2016 12:00:00 UTC; path=/"; <- Make the Cookie
+//document.cookie="HFname=John Doe; expires=Thu, 18 Dec 2016 12:00:00 UTC; path=/"; <- Make the Cookie
 
 
 function getCookie () {			// Check for previous Session Cookie//
